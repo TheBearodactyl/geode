@@ -2,8 +2,11 @@
 name = "geode"
 version = "0.1.0"
 edition = "2021"
+authors = ["The Motherfucking Bearodactyl"]
+license = "Unlicense"
 
 [dependencies]
+anyhow = "1.0.81"
 libc = { version = "0.2.153", features = ["use_std"] }
 proc-macros = { version = "0.1.0", path = "../proc-macros" }
 rcocos2d-sys = "0.2.4"
