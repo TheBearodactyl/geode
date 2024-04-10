@@ -1,4 +1,4 @@
-#![feature(never_type, core_intrinsics)]
+#![feature(never_type)]
 
 pub mod loader;
 pub mod ui;

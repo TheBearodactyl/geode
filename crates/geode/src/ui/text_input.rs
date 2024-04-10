@@ -1,7 +1,3 @@
-use proc_macros::*;
-use rcocos2d_sys::cocos2d_CCSprite as CCSprite;
-
-type Void = !;
 
 #[derive(Debug)]
 pub enum CommonFilter {

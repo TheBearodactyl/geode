@@ -6,4 +6,4 @@ use rcocos2d_sys::cocos2d_CCSprite as CCSprite;
 type Void = ();
 
 pub fn create_layer_bg() -> Option<CCSprite> { None }
-pub fn add_list_borders(to: CCNode, center: CCPoint, size: CCSize) -> Void {}
+pub fn add_list_borders(_to: CCNode, _center: CCPoint, _size: CCSize) -> Void {}

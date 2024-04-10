@@ -1,11 +1,7 @@
 use std::fmt;
-use std::result::Result;
-use std::string::String;
-use std::vec::Vec;
 
 use serde_json::{Map, Value};
 
-// Error type for JSON parsing/validation errors
 #[derive(Debug)]
 pub struct JsonError(String);
 

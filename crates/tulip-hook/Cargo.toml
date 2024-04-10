@@ -1,0 +1,11 @@
+[package]
+name = "tulip-hook"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.82"
+lazy_static = "1.4.0"
+
+[lib]
+crate-type = ["cdylib"]
