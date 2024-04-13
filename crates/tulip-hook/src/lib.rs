@@ -2,6 +2,7 @@ use anyhow::Result as Anyhow;
 use handler::HandlerMetadata;
 use pool::Pool;
 
+pub mod assembler;
 pub mod handler;
 pub mod misc;
 pub mod pool;
