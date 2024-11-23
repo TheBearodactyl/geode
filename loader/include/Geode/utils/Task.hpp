@@ -983,6 +983,7 @@ namespace geode {
             return ListenerResult::Propagate;
         }
 
+        // todo: i believe alk wanted tasks to be in their own pool
         EventListenerPool* getPool() const {
             return DefaultEventListenerPool::get();
         }
