@@ -920,10 +920,45 @@ namespace geode {
                                 );
                         }
                         else if (auto p = event->getProgress()) {
-                            // Map progress from P to NewProgress if possible
-                            if constexpr (std::is_convertible_v<P, NewProgress>) {
-                                NewTask::progress(handle.lock(), std::move(*p));
-                            }
+                            // TODO: Maybe add a progress mapper?
+                            /**
+                             * size_t totalTasks = 1;
+                             * auto currentHandle = handle.lock();
+                             * while (currentHandle && currentHandle->m_extraData) {
+                             *   totalTasks++;
+                             *   auto listener =
+                             *       static_cast<EventListener<NewTask> *>(currentHandle->m_extraData->m_data);
+                             * }
+                             * 
+                             * float normalizedProgress;
+                             * if constexpr (std::is_arithmetic_v<P>) {
+                             *   normalizedProgress = static_cast<float>(*p);
+                             *   if (normalizedProgress > 1.0f) {
+                             *     normalizedProgress /= 100.0f;
+                             *   }
+                             * } else if constexpr (std::is_enum_v<P>) {
+                             *   auto enumVal = static_cast<std::underlying_type_t<P>>(*p);
+                             *   auto enumMin =
+                             *       static_cast<std::underlying_type_t<P>>(std::numeric_limits<P>::min());
+                             *   auto enumMax =
+                             *       static_cast<std::underlying_type_t<P>>(std::numeric_limits<P>::max());
+                             *   normalizedProgress = static_cast<float>(enumVal - enumMin) /
+                             *                        static_cast<float>(enumMax - enumMin);
+                             * } else {
+                             *   if constexpr (requires(P p) { p.getProgress(); }) {
+                             *     normalizedProgress = static_cast<float>(p->getProgress());
+                             *   } else if constexpr (requires(P p) { p.progress(); }) {
+                             *     normalizedProgress = static_cast<float>(p->progress());
+                             *   } else if constexpr (requires(P p) { p.getValue(); }) {
+                             *     normalizedProgress = static_cast<float>(p->getValue());
+                             *   } else {
+                             *     normalizedProgress = 0.5f;
+                             *   }
+                             * 
+                             *   auto scaledProgress = normalizedProgress / static_cast<float>(totalTasks);
+                             *   NewTask::progress(handle.lock(), NewProgress(scaledProgress));
+                             * }
+                             */                                                                                
                         }
                         else if (event->isCancelled()) {
                             NewTask::cancel(handle.lock());
